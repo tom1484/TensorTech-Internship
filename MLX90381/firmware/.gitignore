@@ -1,0 +1,16 @@
+build
+mx.scratch
+!.settings
+
+cmake
+
+Drivers
+Core/Src/stm32*
+Core/Src/system_stm32*
+Core/Src/syscalls.c
+Core/Src/sysmem.c
+Core/Inc/stm32*
+
+*.pdf
+startup_stm32*.s
+STM32*_FLASH.ld
