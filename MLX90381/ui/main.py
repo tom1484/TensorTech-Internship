@@ -345,8 +345,8 @@ class MainWindow(QWidget):
         self.mtp_table.verticalHeader().setDefaultSectionSize(22)
         self.dec_table.verticalHeader().setDefaultSectionSize(22)
 
-        self._fit_table_height(self.reg_table)
-        self._fit_table_height(self.mtp_table)
+        # self._fit_table_height(self.reg_table)
+        # self._fit_table_height(self.mtp_table)
         # Don't fit dec_table height - it has too many rows, allow scrolling
 
         self._fit_table_width(self.reg_table)
