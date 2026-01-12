@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Rust build artifacts
+src-tauri/target/
+
+# Tauri generated
+src-tauri/gen/
+
+# Build output
+dist-tauri/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS generated
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.temp
+.cache/

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MLX90381 UART UI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>MLX90381 UART UI</h1>
+      <span class="subtitle">MCU Bridge</span>
+    </header>
+
+    <!-- Connection Row -->
+    <section class="connection-bar">
+      <label>COM Port:</label>
+      <select id="port-select"></select>
+      <button id="btn-refresh" class="btn btn-secondary">Refresh</button>
+      <button id="btn-connect" class="btn btn-primary">Connect</button>
+      <button id="btn-identify" class="btn btn-action" disabled>Identify (I)</button>
+      <span id="status" class="status disconnected">Disconnected</span>
+    </section>
+
+    <!-- Action Buttons -->
+    <section class="action-bar">
+      <button id="btn-read-reg" class="btn btn-action" disabled>Read Registers (C)</button>
+      <button id="btn-read-mtp" class="btn btn-action" disabled>Read MTP (R)</button>
+      <button id="btn-measure" class="btn btn-action" disabled>Measure (M)</button>
+      <button id="btn-prog-reg" class="btn btn-warning" disabled>Program Registers (W+S)</button>
+      <button id="btn-prog-mtp" class="btn btn-danger" disabled>Program MTP (E+P)</button>
+      <button id="btn-copy-reg-mtp" class="btn btn-secondary" disabled>Copy REG → MTP</button>
+    </section>
+
+    <!-- Tables Section -->
+    <section class="tables-container">
+      <!-- Registers Table -->
+      <div class="table-panel">
+        <h3>Registers (0x20..0x2E)</h3>
+        <div class="table-wrapper">
+          <table id="reg-table">
+            <thead>
+              <tr><th>ADDR</th><th>DEC</th><th>HEX</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- MTP Table -->
+      <div class="table-panel">
+        <h3>MTP (0x00..0x1E)</h3>
+        <div class="table-wrapper scrollable">
+          <table id="mtp-table">
+            <thead>
+              <tr><th>ADDR</th><th>DEC</th><th>HEX</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Decoded Parameters Table -->
+      <div class="table-panel wide">
+        <h3>Decoded Parameters (Customer Area)</h3>
+        <div class="table-wrapper scrollable">
+          <table id="decoded-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>REG DEC</th>
+                <th>MTP DEC</th>
+                <th>REG HEX</th>
+                <th>MTP HEX</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Section: Log + Presets -->
+    <section class="bottom-section">
+      <!-- Log -->
+      <div class="log-panel">
+        <h3>Log</h3>
+        <div id="log" class="log-area"></div>
+      </div>
+
+      <!-- Sensing Mode Presets -->
+      <div class="presets-panel">
+        <h3>Sensing Mode OUT1/2</h3>
+        <div class="radio-group">
+          <label><input type="radio" name="sensing-mode" value="xy"> X/Y mode</label>
+          <label><input type="radio" name="sensing-mode" value="yx"> Y/X mode</label>
+          <label><input type="radio" name="sensing-mode" value="xz"> X/Z mode</label>
+          <label><input type="radio" name="sensing-mode" value="zx"> Z/X mode</label>
+          <label><input type="radio" name="sensing-mode" value="yz"> Y/Z mode</label>
+          <label><input type="radio" name="sensing-mode" value="zy"> Z/Y mode</label>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
+

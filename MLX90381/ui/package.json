@@ -1,0 +1,17 @@
+{
+  "name": "mlx90381-ui",
+  "version": "1.0.0",
+  "description": "MLX90381 UART UI (Tauri)",
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.0.0"
+  }
+}
+
