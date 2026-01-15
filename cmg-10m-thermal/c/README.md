@@ -6,9 +6,11 @@ A C implementation of the MCC 134 thermocouple interface and data fusion tool.
 
 - **List MCC 134 boards** - Detect and display connected thermocouple DAQ boards
 - **Read temperature data** - Get temperature, ADC voltage, and CJC readings
+- **Stream mode** - Continuous readings at specified frequency (Hz)
 - **Configure channels** - Set thermocouple types, calibration coefficients, update intervals
 - **Data fusion bridge** - Inject thermal data into `cmg-cli` output streams
 - **JSON output** - Machine-readable output for integration
+- **Clean mode** - Simple output without formatting for scripting
 - **Config files** - Support YAML and JSON configuration files
 
 ## Dependencies
@@ -79,6 +81,15 @@ thermo-cli get -a 0 -c 0 --temp --adc --cjc
 
 # JSON output
 thermo-cli get -a 0 -c 1 --temp --json
+
+# Stream temperature readings at 2 Hz
+thermo-cli get --temp --stream 2
+
+# Stream with JSON output at 5 Hz
+thermo-cli get -T -A --stream 5 --json
+
+# Clean output mode (no alignment/formatting)
+thermo-cli get --temp --clean
 ```
 
 ### Get Board Information
@@ -189,7 +200,30 @@ Read data from a specific channel.
 - `-A, --adc` - Get raw ADC voltage
 - `-J, --cjc` - Get CJC temperature
 - `-i, --update-interval` - Get update interval
+- `-S, --stream HZ` - Stream readings at specified frequency (Hz)
+- `-l, --clean` - Simple output without alignment/formatting
 - `-j, --json` - Output as JSON
+
+**Stream Mode:**
+- Streams dynamic data (temperature, ADC, CJC) continuously at the specified Hz rate
+- Static data (serial, calibration, update interval) is displayed once at the beginning
+- Use Ctrl+C to stop streaming
+- In clean mode, no separator lines or alignment are used
+
+**Examples:**
+```bash
+# Single reading with formatted output
+thermo-cli get -T -A
+
+# Stream at 2 Hz
+thermo-cli get -T --stream 2
+
+# Stream with static info displayed once
+thermo-cli get -s -T -A --stream 5
+
+# Clean mode (simple output)
+thermo-cli get -T --clean
+```
 
 #### `set`
 Configure channel parameters.

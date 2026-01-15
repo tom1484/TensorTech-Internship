@@ -86,6 +86,7 @@ static void print_command_help(const char *cmd_name) {
         printf("  -A, --adc                Get raw ADC voltage\n");
         printf("  -J, --cjc                Get CJC temperature\n");
         printf("  -i, --update-interval    Get update interval\n");
+        printf("  -S, --stream HZ          Stream readings at specified frequency (Hz)\n");
         printf("  -j, --json               Output as JSON\n");
     } else if (strcmp(cmd_name, "set") == 0) {
         printf("Usage: thermo-cli set [OPTIONS]\n\n");
