@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "thermo"
+version = "0.1.0"
+description = "MCC 134 Interface and Data Fuser for TensorCMG-10m"
+readme = "PLAN.md"
+requires-python = ">=3.10"
+dependencies = [
+    "typer>=0.9.0",
+    "rich>=13.0.0",
+    "pyyaml>=6.0",
+    "daqhats",
+]
+
+[project.scripts]
+thermo-cli = "thermo.main:main"
+
+[tool.setuptools.packages.find]
+include = ["thermo*"]
