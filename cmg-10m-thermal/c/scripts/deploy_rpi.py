@@ -220,6 +220,11 @@ Examples:
         action="store_true",
         help="Skip dependency installation (assumes already installed)",
     )
+    parser.add_argument(
+        "--update",
+        action="store_true",
+        help="Update mode: skip dependency installation (faster for subsequent deployments)",
+    )
 
     args = parser.parse_args()
 
@@ -253,7 +258,7 @@ Examples:
             return
 
         # Install dependencies
-        if not args.no_deps:
+        if not args.no_deps and not args.update:
             install_dependencies(args.host, args.password, args.remote_path)
 
         # Build project
